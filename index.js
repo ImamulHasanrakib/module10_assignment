@@ -51,7 +51,7 @@ const server = http.createServer((req, res) => {
           upload.single('file')(req, res, (err) => {
             if (err) {
               res.writeHead(500, { 'Content-Type': 'text/plain' });
-              res.end('Internal Server Error');\
+              res.end('Internal Server Error');
               
             } else {
               const { filename, originalname } = req.file;
