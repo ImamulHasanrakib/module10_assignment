@@ -5,10 +5,11 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads'); 
+    cb(null, './uploads');
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname); 
+    cb(null, file.originalname);
+  },
 });
 
 const upload = multer({ storage: storage });
@@ -52,7 +53,6 @@ const server = http.createServer((req, res) => {
             if (err) {
               res.writeHead(500, { 'Content-Type': 'text/plain' });
               res.end('Internal Server Error');
-              
             } else {
               const { filename, originalname } = req.file;
               res.writeHead(200, { 'Content-Type': 'text/plain' });
